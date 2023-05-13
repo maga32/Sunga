@@ -93,7 +93,7 @@
 			}
 		},
 		async created() {
-			const response = await fetch("https://notion-api.splitbee.io/v1/table/128fca3ed9694059a547211ebd67c2e0");
+			const response = await fetch("https://notion-api.splitbee.io/v1/table/411778bf1c484d479e84c87117d4b5b5");
 			const data = await response.json();
 			console.log(data);
 			this.projectList = data;
