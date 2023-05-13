@@ -93,10 +93,10 @@
 			}
 		},
 		async created() {
-			const response = await fetch("https://notion-api.splitbee.io/v1/table/411778bf1c484d479e84c87117d4b5b5");
+			const response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://notion-api.splitbee.io/v1/table/411778bf1c484d479e84c87117d4b5b5'));
 			const data = await response.json();
-			console.log(data);
-			this.projectList = data;
+			console.log(JSON.parse(data.contents));
+			this.projectList = JSON.parse(data.contents);
 		},
 		methods: {
 			setEnvColor(text) {
