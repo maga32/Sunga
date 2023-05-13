@@ -1,14 +1,14 @@
 <template>
-	<div class="about">
+	<div class="">
 		<table class="mx-auto my-4">
 			<tr class="border-bottom">
-				<th>
+				<th class="py-2">
 					Project
 				</th>
-				<th>
+				<th class="py-2">
 					Environment
 				</th>
-				<th>
+				<th class="py-2 pe-3">
 					Duration
 				</th>
 			</tr>
@@ -20,51 +20,51 @@
 				</td>
 			</tr>
 			<template v-for="(v,i) in projectList" :key="'PList'+i">
-				<tr v-bind:class="[selectedType != v.type && selectedType != 'all' ? 'd-none' : '']">
-					<td rowspan="4" class="ps-2">
+				<tr v-bind:class="[selectedType != v.type && selectedType != 'all' ? 'd-none' : ''] + [i%2 == 0 ? ' bg-light' : '']">
+					<td rowspan="4" class="ps-3 pe-1">
 						<div>
-							<div :class="'pointer px-2 me-1 badge bg-light text-' + setTypeColor(v.type)" v-on:click="selectType(v.type)">
+							<div :class="'pointer px-2 me-1 badge bg-light-subtle text-' + setTypeColor(v.type)" v-on:click="selectType(v.type)">
 								{{v.type}}
 							</div>
-							<div class="fw-bold">
+							<div class="fw-bold fs-5">
 								<a :href="v.link" target="_blank">
 									{{v.name}}
 								</a>
 							</div>
 						</div>
 					</td>
-					<td class="fromLeft pt-4 px-3 pb-2">
-						<div v-html="v.site_description"></div>
-						<div v-if="v.git_link" class="pt-2">
-							<a :href="v.git_link" target="_blank" class="text-info">
+					<td class="fromLeft pt-5 px-3 pb-2">
+						<h5><div v-html="v.site_description" class="pb-2"></div></h5>
+						<div v-if="v.git_link" class="pt-2 pb-1">
+							<a :href="v.git_link" target="_blank" class="text-info fs-bold">
 								-GitHub Link
 							</a>
 						</div>
 					</td>
-					<td rowspan="3">
+					<td rowspan="3" class="pe-3">
 						<div class="text-nowrap">{{v.time_from}}</div>
 						<div>~</div>
 						<div class="text-nowrap">{{v.time_to}}</div>
 					</td>
 				</tr>
-				<tr v-bind:class="[selectedType != v.type && selectedType != 'all' ? 'd-none' : '']">
+				<tr v-bind:class="[selectedType != v.type && selectedType != 'all' ? 'd-none' : ''] + [i%2 == 0 ? ' bg-light' : '']">
 					<td class="fromLeft px-3">
 						<span v-for="(v2,i2) in v.environment" :key="i2" 
-								:class="'px-2 me-1 badge rounded-pill text-bg-' + setEnvColor(v2)[0]">
+								:class="'px-2 me-2 badge rounded-pill text-bg-' + setEnvColor(v2)[0]">
 							{{setEnvColor(v2)[1]}}
 						</span>
 					</td>
 				</tr>
-				<tr v-bind:class="[selectedType != v.type && selectedType != 'all' ? 'd-none' : '']">
-					<td class="fromLeft pt-1 pb-4">
+				<tr v-bind:class="[selectedType != v.type && selectedType != 'all' ? 'd-none' : ''] + [i%2 == 0 ? ' bg-light' : '']">
+					<td class="fromLeft pt-2 pb-4">
 						<button class="btn btn-sm text-secondary" type="button" data-bs-toggle="collapse" 
 								:data-bs-target="'#developDescription_' + i" aria-expanded="false" :aria-controls="'developDescription_' + i">
 							▼Discription
 						</button>
 					</td>
 				</tr>
-				<tr v-bind:class="[selectedType != v.type && selectedType != 'all' ? 'd-none' : 'border-bottom']">
-					<td colspan="2">
+				<tr v-bind:class="[selectedType != v.type && selectedType != 'all' ? 'd-none' : 'border-bottom'] + [i%2 == 0 ? ' bg-light' : '']">
+					<td colspan="2" class="pb-2">
 						<div class="collapse px-3 pb-3 mb-4" :id="'developDescription_' + i">
 							<div v-html="v.develop_description" class="card card-body fromLeft bg-light text-secondary">
 							</div>
@@ -93,7 +93,7 @@
 			}
 		},
 		async created() {
-			const response = await fetch("https://notion-api.splitbee.io/v1/table/411778bf1c484d479e84c87117d4b5b5");
+			const response = await fetch("/table/411778bf1c484d479e84c87117d4b5b5");
 			const data = await response.json();
 			console.log(data);
 			this.projectList = data;
@@ -122,6 +122,7 @@
 		CMS: "light",
 		Server: "warning",
 		WAS: "info",
+		CI: "info",
 		SSL: "light",
 		OS: "dark",
 		
