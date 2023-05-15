@@ -1,6 +1,6 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
+  <nav class="sticky-top bg-white">
+    <router-link to="/">Home</router-link>&nbsp;&nbsp;|&nbsp;
     <router-link to="/project">Project</router-link>
   </nav>
   <router-view/>
