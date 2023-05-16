@@ -1,0 +1,13 @@
+.pointer { cursor: pointer; }
+.fromLeft {
+	white-space: pre-wrap;
+	text-align: left;
+}
+.fromRight {
+	white-space: pre-wrap;
+	text-align: right;
+}
+a { 
+	color: #42b983;
+	text-decoration-line: none;
+}

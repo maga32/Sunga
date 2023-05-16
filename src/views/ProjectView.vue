@@ -1,6 +1,6 @@
 <template>
 	<div class="">
-		<table class="mx-auto my-4">
+		<table class="mx-auto my-4" data-aos="fade-left" data-aos-duration="1500">
 			<tr class="border-bottom">
 				<th class="py-2">
 					Project
@@ -36,8 +36,8 @@
 					<td class="fromLeft pt-5 px-3 pb-2">
 						<h5><div v-html="v.site_description" class="pb-2"></div></h5>
 						<div v-if="v.git_link" class="pt-2 pb-1">
-							<a :href="v.git_link" target="_blank" class="text-info fs-bold">
-								-GitHub Link
+							<a :href="v.git_link" target="_blank" class="fs-bold btn btn-sm btn-outline-secondary">
+								&lt; &gt; GitHub
 							</a>
 						</div>
 					</td>
@@ -84,6 +84,7 @@
 </template>
 
 <script>
+	import AOS from 'aos'
 	export default {
 		name: 'App',
 		data() {
@@ -93,7 +94,8 @@
 			}
 		},
 		async created() {
-			const response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://notion-api.splitbee.io/v1/table/411778bf1c484d479e84c87117d4b5b5'));
+			AOS.init();
+			const response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://notion-api.splitbee.io/v1/table/ff85b851c58f427fb9f636f924d7b6c8'));
 			const data = await response.json();
 			console.log(JSON.parse(data.contents));
 			this.projectList = JSON.parse(data.contents);
@@ -135,13 +137,5 @@
 </script>
 
 <style>
-	.pointer { cursor: pointer; }
-	.fromLeft {
-		white-space: pre-wrap;
-		text-align: left;
-	}
-	a { 
-		color: #42b983;
-		text-decoration-line: none;
-	}
+
 </style>
