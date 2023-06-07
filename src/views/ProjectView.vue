@@ -40,6 +40,12 @@
 								&lt; &gt; GitHub
 							</a>
 						</div>
+						<div>
+							<span class="fw-bold">- 역할 : </span>
+							<span v-for="(v2,i2) in v.role" :key="'role'+i2" class="px-1 text-secondary">
+								{{v2}}<span v-if="i2 != v.role.length - 1">&nbsp;&nbsp;/</span>
+							</span>
+						</div>
 					</td>
 					<td rowspan="3" class="pe-3">
 						<div class="text-nowrap">{{v.time_from}}</div>
