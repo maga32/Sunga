@@ -137,10 +137,10 @@ export default {
 	},
 	async created() {
 		AOS.init();
-		const response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://notion-api.splitbee.io/v1/table/5c7185230df24b6e97394f874d03f1c1'));
+		const response = await fetch('https://cors.eu.org/'+encodeURIComponent('https://notion-api.splitbee.io/v1/table/5c7185230df24b6e97394f874d03f1c1'));
 		const data = await response.json();
-		console.log(JSON.parse(data.contents));
-		this.skillList = JSON.parse(data.contents);
+		console.log(data);
+		this.skillList = data;
 	},  
 	components: {
 		DownArrow
