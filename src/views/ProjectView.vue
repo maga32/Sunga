@@ -101,7 +101,7 @@
 		},
 		async created() {
 			AOS.init();
-			const response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://notion-api.splitbee.io/v1/table/ff85b851c58f427fb9f636f924d7b6c8'));
+			const response = await fetch('https://cors.eu.org/'+encodeURIComponent('https://notion-api.splitbee.io/v1/table/ff85b851c58f427fb9f636f924d7b6c8'));
 			const data = await response.json();
 			console.log(JSON.parse(data.contents));
 			this.projectList = JSON.parse(data.contents);
