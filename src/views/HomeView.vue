@@ -90,13 +90,9 @@
 				은,
 			</div>
 			<div class="fs-1 fw-bold py-5">
-				<template v-for="(v,i) in skillList" :key="'favoriteList'+i">
-					<template v-for="(v2, i2) in v.img_file" :key="'favoriteImgList'+i2">
-						<div v-if="['Java', 'spring', 'jQuery', 'MySQL'].includes(v2.name.split('.')[0])" data-aos="fade-down" data-aos-duration="1500">
-							<img :src="v2.url" style="height:80px;">
-						</div>
-					</template>
-				</template>
+        <div v-for="(li,i) in specialty" :key="'specialty'+i" data-aos="fade-down" data-aos-duration="1500">
+          <img :src="li.img_file[0].url" style="height:85px;">
+        </div>
 			</div>
 			<div class="fs-1 fw-bold mt-3" data-aos="fade-down">
 				입니다
@@ -133,15 +129,16 @@ export default {
 	data() {
 		return {
 			skillList: [],
+      specialty: [],
 		}
 	},
 	async created() {
 		AOS.init();
-		const response = await fetch('https://cors.eu.org/'+encodeURIComponent('https://notion-api.splitbee.io/v1/table/5c7185230df24b6e97394f874d03f1c1'));
-		const data = await response.json();
-		console.log(data);
-		this.skillList = data;
-	},  
+		const skillList = await fetch('https://cors.eu.org/'+encodeURIComponent('https://notion-api.splitbee.io/v1/table/5c7185230df24b6e97394f874d03f1c1'));
+		this.skillList = await skillList.json();
+    const specialty = await fetch('https://cors.eu.org/'+encodeURIComponent('https://notion-api.splitbee.io/v1/table/d9b63cd85bf140879a42179c68d4d1b4'));
+    this.specialty = await specialty.json();
+	},
 	components: {
 		DownArrow
 	},
