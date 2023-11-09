@@ -1,7 +1,7 @@
 <template>
-	<div :class="classProps">
-		<i class="fa fa-angle-double-down fa-4x upNDown" aria-hidden="true"></i>
-	</div>
+  <div :class="classProps">
+    <i class="fa fa-angle-double-down fa-4x upNDown" aria-hidden="true"></i>
+  </div>
 </template>
 
 <script>
