@@ -131,14 +131,15 @@ const colors = {
   Server:     "warning",
   WAS:        "warning",
   SCM:        "info",
-  CI:         "info",
+  CICD:       "info",
   SSL:        "light",
   OS:         "dark",
+  기타:        "secondary",
 
   개인:       "primary",
   팀:        "warning",
   회사:       "danger",
-  수주:       "success",
+  외주:       "success",
 }
 </script>
 
