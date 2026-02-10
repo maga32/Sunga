@@ -101,7 +101,7 @@ export default {
   },
   async created() {
     AOS.init();
-    const response = await fetch('https://notion-api.splitbee.io/v1/table/ff85b851c58f427fb9f636f924d7b6c8');
+    const response = await fetch('https://w-peach.duckdns.org/util/notion?url='+encodeURIComponent(`https://maga32.notion.site/ff85b851c58f427fb9f636f924d7b6c8`));
     const data = await response.json();
     console.log(data);
     this.projectList = data;

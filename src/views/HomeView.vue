@@ -134,9 +134,9 @@ export default {
   },
   async created() {
     AOS.init();
-    const skillList = await fetch('https://notion-api.splitbee.io/v1/table/5c7185230df24b6e97394f874d03f1c1');
+    const skillList = await fetch('https://w-peach.duckdns.org/util/notion?url='+encodeURIComponent(`https://maga32.notion.site/5c7185230df24b6e97394f874d03f1c1`));
     this.skillList = await skillList.json();
-    const specialty = await fetch('https://notion-api.splitbee.io/v1/table/d9b63cd85bf140879a42179c68d4d1b4');
+    const specialty = await fetch('https://w-peach.duckdns.org/util/notion?url='+encodeURIComponent(`https://maga32.notion.site/d9b63cd85bf140879a42179c68d4d1b4`));
     this.specialty = await specialty.json();
   },
   components: {
